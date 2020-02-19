@@ -29,6 +29,10 @@ export default {
     Home,
   },
 
+  created () {
+      this.$vuetify.theme.dark = true
+    },
+
   data: () => ({
     //
   }),
