@@ -4,7 +4,7 @@
       <v-col class="text-center">
         <v-avatar size="160" class="mt-9">
           <img
-            src="https://avatars1.githubusercontent.com/u/27262239?s=460&v=4"
+            src="../assets/coby-yates-profile-pic.png"
             alt="Profile Picture of Coby Yates"
           />
         </v-avatar>
