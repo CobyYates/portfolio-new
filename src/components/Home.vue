@@ -104,21 +104,28 @@
     <v-row class="mb-12">
       <v-col class="text-center">
         <h2 class="display-1 text-center font-weight-thin">My Work</h2>
+        <v-card
+          color="red lighten-4"
+          height="100px"
+          class="d-flex align-center justify-center black--text my-6 display-1"
+          >This section is currently being developed</v-card
+        >
         <!-- MY WORK -->
         <v-card flat tile class="mt-6">
           <v-window v-model="onboarding" vertical>
             <v-window-item v-for="project in projects" :key="project">
-              <v-card :color="project.color" height="800">
+              <v-card :color="project.color" height="85vh">
                 <v-row
-                  class="fill-height"
+                  class="fill-height d-flex align-center justify-center"
                   align="center"
                   justify="center"
                   tag="v-card-text"
                 >
-                  <v-col>
-                    <v-img :src="project.image"></v-img>
+                  <v-col cols="6" class="pt-0 mt-0 d-flex align-end justify-center">
+                    <v-img :src="`../assets/photo${project.image}.png`" max-height="70vh"></v-img>
+                    <!-- src="../assets/pokemon.png" -->
                   </v-col>
-                  <v-col>
+                  <v-col cols="6">
                     <v-container
                       background-color="red"
                       class="px-12 d-flex flex-column "
@@ -127,7 +134,7 @@
                       <p class="title font-weight-thin mb-5">
                         {{ project.type }}
                       </p>
-                      <div class="d-flex justify-space-around" width="40">
+                      <div class="d-flex justify-space-around flex-wrap" width="40">
                         <div
                           v-for="lang in project.lang"
                           :key="lang"
@@ -135,7 +142,7 @@
                         >
                           <v-icon :color="lang.color" x-large class="mr-5">
                             {{ lang.icon }}
-                            </v-icon>
+                          </v-icon>
                           <p class="title font-weight-thin">{{ lang.name }}</p>
                         </div>
                       </div>
@@ -226,14 +233,34 @@ export default {
       { title: "Mongoose", icon: "mdi-nodejs", color: "blue" },
       { title: "React", icon: "mdi-react", color: "blue" }
     ],
-    length: 4,
+    length: 7,
     onboarding: 0,
     projects: [
       {
+        name: "Keystroke App",
+        type: "Senior Capstone Project",
+        color: "purple",
+        image: "../assets/starwars.png",
+        lang: [
+          { name: "Vue.js", icon: "mdi-vuejs", color: "green" },
+          { name: "Vuetify", icon: "mdi-vuejs", color: "blue" },
+          { name: "Node.js", icon: "mdi-nodejs", color: "green" },
+          { name: "MongoDB", icon: "mdi-nodejs", color: "green" },
+          { name: "Express", icon: "mdi-nodejs", color: "blue" },
+          { name: "Mongoose", icon: "mdi-nodejs", color: "blue" }
+        ],
+        details:
+          "For my Senior Captsone project, my group and I were asked to make a web app. Our requirements were to:",
+        list: [
+          {item: 'Create testing platform'},
+          {item: ''},
+        ]
+      },
+      {
         name: "Weather App",
         type: "School Project",
-        color: "red",
-        image: "../assets/starwars.png",
+        color: "purple",
+        image: '1',
         lang: [
           { name: "React", icon: "mdi-react", color: "blue" },
           { name: "Material-UI", icon: "mdi-material-ui", color: "blue" }
@@ -244,8 +271,8 @@ export default {
       {
         name: "Car Garage",
         type: "School Project",
-        color: "green",
-        image: "",
+        color: "teal",
+        image: "../assets/starwars.png",
         lang: [
           { name: "Vue.js", icon: "mdi-vuejs", color: "green" },
           { name: "Vuetify", icon: "mdi-vuejs", color: "blue" }
@@ -256,8 +283,8 @@ export default {
       {
         name: "Star Wars API",
         type: "School Project",
-        color: "blue",
-        image: "",
+        color: "indigo",
+        image: "../assets/starwars.png",
         lang: [
           { name: "HTML", icon: "mdi-language-html5", color: "orange" },
           { name: "CSS", icon: "mdi-language-css3", color: "blue" },
@@ -273,11 +300,28 @@ export default {
       {
         name: "Pokemon API",
         type: "School Project",
-        color: "red",
-        image: "",
+        color: "indigo",
+        image: "../assets/pokemon.png",
         lang: [
           { name: "HTML", icon: "mdi-language-html5", color: "orange" },
           { name: "CSS", icon: "mdi-language-css3", color: "blue" },
+          {
+            name: "JavaScript",
+            icon: "mdi-language-javascript",
+            color: "yellow"
+          }
+        ],
+        details:
+          "For this project, I learned JavaScript for the first time. The project was to fetch data from an API and display it in a card layout."
+      },
+      {
+        name: "Boka",
+        type: "Client Project",
+        color: "teal",
+        image: "../assets/starwars.png",
+        lang: [
+          { name: "Vue.js", icon: "mdi-vuejs", color: "green" },
+          { name: "Vuetify", icon: "mdi-vuejs", color: "blue" },
           {
             name: "JavaScript",
             icon: "mdi-language-javascript",
