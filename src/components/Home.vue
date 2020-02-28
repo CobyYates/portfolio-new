@@ -166,11 +166,11 @@
                           </v-list-item-content>
                         </v-list-item>
                       </div>
-
-                      <!-- Link to a URL -->
-
-                      <v-icon x-large>mdi-git</v-icon>
-                      <p>GitHub</p>
+                      <center>
+                          <v-icon :to="project.url" x-large>mdi-git</v-icon>
+                          <p>GitHub</p>
+                      </center>                     
+                                           
                     </v-container>
                   </v-col>
                 </v-row>
@@ -255,6 +255,7 @@ export default {
     projects: [
       {
         name: "Keystroke App",
+        url: "#",
         type: "Senior Capstone Project",
         color: "purple",
         image: "../assets/starwars.png",
@@ -275,6 +276,7 @@ export default {
       },
       {
         name: "Weather App",
+        url: "",
         type: "School Project",
         color: "blue darken-4",
         image: "1",
@@ -292,6 +294,7 @@ export default {
       },
       {
         name: "Car Garage",
+        url: "https://github.com/CobyYates/SuperCars",
         type: "School Project",
         color: "teal",
         image: "../assets/starwars.png",
@@ -313,6 +316,7 @@ export default {
       },
       {
         name: "Star Wars API",
+        url: "",
         type: "School Project",
         color: "grey darken-3",
         image: "../assets/starwars.png",
@@ -333,6 +337,7 @@ export default {
       },
       {
         name: "Pokemon API",
+        url: "",
         type: "School Project",
         color: "red darken-2",
         image: "../assets/pokemon.png",
@@ -353,7 +358,8 @@ export default {
       },
       {
         name: "Boka",
-        type: "Client Project",
+        url: "",
+        type: "Client/Passion Project",
         color: "purple darken-2",
         image: "../assets/starwars.png",
         lang: [
