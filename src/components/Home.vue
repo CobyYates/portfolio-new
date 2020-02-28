@@ -16,7 +16,7 @@
             <div
               class="d-flex align-baseline "
               v-for="lang in langs"
-              :key="lang"
+              :key="lang.title"
             >
               <v-col class="mx-0 px-0" cols="2">
                 <v-icon medium :color="lang.color" class="mr-4">{{
@@ -33,7 +33,7 @@
             <div
               class="d-flex align-baseline"
               v-for="framework in frameworks"
-              :key="framework"
+              :key="framework.title"
             >
               <v-col class="mx-0 px-0" cols="2">
                 <v-icon medium :color="framework.color" class="mr-4">{{
@@ -50,7 +50,7 @@
             <div
               class="d-flex align-baseline"
               v-for="software in softwares"
-              :key="software"
+              :key="software.title"
             >
               <v-col class="mx-0 px-0" cols="2">
                 <v-icon medium :color="software.color" class="mr-4">{{
@@ -67,7 +67,7 @@
             <div
               class="d-flex align-baseline"
               v-for="additional in additionals"
-              :key="additional"
+              :key="additional.title"
             >
               <v-col class="mx-0 px-0" cols="2">
                 <v-icon medium :color="additional.color" class="mr-4">{{
@@ -87,7 +87,7 @@
             <div class="d-flex justify-space-between">
               <div
                 v-for="experience in experiences"
-                :key="experience"
+                :key="experience.title"
                 class="d-flex align-baseline"
               >
                 <v-icon medium :color="experience.color" class="mr-4">
@@ -103,7 +103,7 @@
     <v-divider class="my-5 ml-auto mr-auto" width="50%"></v-divider>
     <v-row class="mb-12">
       <v-col class="text-center">
-        <h2 class="display-1 text-center font-weight-thin">My Work</h2>
+        <h2 class="display-1 text-center font-weight-thin">My Projects</h2>
         <v-card
           color="red lighten-4"
           height="100px"
@@ -113,32 +113,40 @@
         <!-- MY WORK -->
         <v-card flat tile class="mt-6">
           <v-window v-model="onboarding" vertical>
-            <v-window-item v-for="project in projects" :key="project">
+            <v-window-item v-for="project in projects" :key="project.name">
               <v-card :color="project.color" height="85vh">
                 <v-row
                   class="fill-height d-flex align-center justify-center"
                   align="center"
                   justify="center"
-                  tag="v-card-text"
                 >
-                  <v-col cols="6" class="pt-0 mt-0 d-flex align-end justify-center">
-                    <v-img :src="`../assets/photo${project.image}.png`" max-height="70vh"></v-img>
+                  <v-col
+                    cols="6"
+                    class="pt-0 mt-0 d-flex align-end justify-center"
+                  >
+                    <v-img
+                      :src="`../assets/photo${project.image}.png`"
+                      max-height="70vh"
+                    ></v-img>
                     <!-- src="../assets/pokemon.png" -->
                   </v-col>
                   <v-col cols="6">
                     <v-container
                       background-color="red"
-                      class="px-12 d-flex flex-column "
+                      class="py-0 d-flex flex-column justify-space-between"
                     >
                       <p class="display-2">{{ project.name }}</p>
                       <p class="title font-weight-thin mb-5">
                         {{ project.type }}
                       </p>
-                      <div class="d-flex justify-space-around flex-wrap" width="40">
+                      <div
+                        class="d-flex justify-space-around flex-wrap"
+                        width="40"
+                      >
                         <div
                           v-for="lang in project.lang"
-                          :key="lang"
-                          class="d-flex my-10"
+                          :key="lang.name"
+                          class="d-flex"
                         >
                           <v-icon :color="lang.color" x-large class="mr-5">
                             {{ lang.icon }}
@@ -147,9 +155,17 @@
                         </div>
                       </div>
 
-                      <p class="title font-weight-thin my-10">
+                      <p class="title font-weight-thin text-left pt-3">
                         {{ project.details }}
                       </p>
+                      <div>
+                        <p class="title font-weight-regular">Project Requirements</p>
+                        <v-list-item>
+                          <v-list-item-content>
+                            <v-list-item-title class="text-left pl-12" v-for="proj in project.list" :key="proj.item">✔ {{ proj.item }}</v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </div>
 
                       <!-- Link to a URL -->
 
@@ -231,7 +247,8 @@ export default {
       { title: "MongoDB", icon: "mdi-nodejs", color: "green" },
       { title: "Express", icon: "mdi-nodejs", color: "blue" },
       { title: "Mongoose", icon: "mdi-nodejs", color: "blue" },
-      { title: "React", icon: "mdi-react", color: "blue" }
+      { title: "React", icon: "mdi-react", color: "blue" },
+      { title: "Next.js", icon: "mdi-react", color: "blue" }
     ],
     length: 7,
     onboarding: 0,
@@ -244,29 +261,34 @@ export default {
         lang: [
           { name: "Vue.js", icon: "mdi-vuejs", color: "green" },
           { name: "Vuetify", icon: "mdi-vuejs", color: "blue" },
-          { name: "Node.js", icon: "mdi-nodejs", color: "green" },
-          { name: "MongoDB", icon: "mdi-nodejs", color: "green" },
-          { name: "Express", icon: "mdi-nodejs", color: "blue" },
-          { name: "Mongoose", icon: "mdi-nodejs", color: "blue" }
+          { name: "Node.js", icon: "mdi-nodejs", color: "green" }
         ],
         details:
           "For my Senior Captsone project, my group and I were asked to make a web app. Our requirements were to:",
         list: [
-          {item: 'Create testing platform'},
-          {item: ''},
-        ]
+          { item: "Create testing platform for staff and students" }, 
+          { item: "Allow teachers to create their own quizzes" },
+          { item: "Record students 'keystrokes' using JavaScript" },
+          { item: "Record data in a database" },
+          { item: "Allow teachers to create their own quizzes" },
+          ]
       },
       {
         name: "Weather App",
         type: "School Project",
-        color: "purple",
-        image: '1',
+        color: "blue darken-4",
+        image: "1",
         lang: [
           { name: "React", icon: "mdi-react", color: "blue" },
           { name: "Material-UI", icon: "mdi-material-ui", color: "blue" }
         ],
         details:
-          "This is a project we had to complete in under a week. I learned as much React as I could in that amount of time and made what you see here."
+          "This is a project we had to complete in under a week. I learned as much React as I could in that amount of time and made what you see here.",
+        list: [
+          { item: "Display 1 week of weather" },
+          { item: "Ability to switch between C° and F°" },
+          { item: "Search weather by zipcode provided by user" },
+          ]
       },
       {
         name: "Car Garage",
@@ -278,12 +300,21 @@ export default {
           { name: "Vuetify", icon: "mdi-vuejs", color: "blue" }
         ],
         details:
-          "This project was over one semester where we learned Vue.js. I learned how to do state management to allow the user to create a dream garage. I had a lot of fun with this project."
+          "This project was over one semester where we learned Vue.js. I learned how to do state management to allow the user to create a dream garage. I had a lot of fun with this project.",
+        list: [
+          { item: "Encapsulate code as VueJS single-file components" },
+          { item: "Communicate between components using props & local store" },
+          { item: "Create user form with validation and feedback" },
+          { item: "Create a custom directive" },
+          { item: "Use animations and transitions" },
+          { item: "Connect to an API using Axios" },
+          { item: "Manage your application's state using vuex" },
+          ]
       },
       {
         name: "Star Wars API",
         type: "School Project",
-        color: "indigo",
+        color: "grey darken-3",
         image: "../assets/starwars.png",
         lang: [
           { name: "HTML", icon: "mdi-language-html5", color: "orange" },
@@ -295,12 +326,15 @@ export default {
           }
         ],
         details:
-          "For this project, I learned JavaScript for the first time. The project was to fetch data from an API and display it in a card layout."
+          "For this project, I learned JavaScript for the first time. The project was to fetch data from an API and display it in a card layout.",
+        list: [
+          { item: "" },
+          ]
       },
       {
         name: "Pokemon API",
         type: "School Project",
-        color: "indigo",
+        color: "red darken-2",
         image: "../assets/pokemon.png",
         lang: [
           { name: "HTML", icon: "mdi-language-html5", color: "orange" },
@@ -312,12 +346,15 @@ export default {
           }
         ],
         details:
-          "For this project, I learned JavaScript for the first time. The project was to fetch data from an API and display it in a card layout."
+          "For this project, I learned JavaScript for the first time. The project was to fetch data from an API and display it in a card layout.",
+        list: [
+          { item: "" },
+          ]
       },
       {
         name: "Boka",
         type: "Client Project",
-        color: "teal",
+        color: "purple darken-2",
         image: "../assets/starwars.png",
         lang: [
           { name: "Vue.js", icon: "mdi-vuejs", color: "green" },
@@ -329,7 +366,11 @@ export default {
           }
         ],
         details:
-          "For this project, I learned JavaScript for the first time. The project was to fetch data from an API and display it in a card layout."
+          "For this project, my brother wanted to make a CRM for photographers.",
+        list: [
+          { item: "Create a CRM for content creators" },
+          { item: "Create dashboard for content creators" },
+          ]
       }
     ]
   }),
